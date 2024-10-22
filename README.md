@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Weather Dashboard Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+The Weather Dashboard Application is a responsive web application built using React and Tailwind CSS. It allows users to search for weather information by city, providing real-time data such as temperature, humidity, wind speed, and weather conditions. The application utilizes the OpenWeather API for weather data and the Unsplash API to refresh background images based on the weather.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **City Search**: Users can input the name of a city to retrieve weather information. The app suggests cities based on user input for easier selection.
+- **Weather Data**: Displays current temperature, humidity, wind speed, and weather conditions with corresponding icons.
+- **Dynamic Background**: Changes the background image based on the weather condition using the Unsplash API.
+- **Responsive Design**: The application is fully responsive and works seamlessly on various devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend**: React, Tailwind CSS
+- **APIs**: OpenWeather API, Unsplash API
+- **Deployment**: Vercel, Netlify
+- **State Management**: React hooks
+- **Styling**: Tailwind CSS
 
-### `npm test`
+## Learning Outcomes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+During the development of this project, I learned:
 
-### `npm run build`
+- API integration with OpenWeather for geolocation (fetching latitude and longitude) and weather data.
+- Using Postman to test API requests.
+- Deployment of the application on platforms like Vercel and Netlify.
+- Implementation of the react-select library for better user experience.
+- How to hide API keys using `.env` files to enhance security.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Weather Dashboard Application is deployed on both Vercel and Netlify. You can check out the live project and see it in action:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Live Demo on Vercel](https://weather-app-v2-orcin.vercel.app/)
+- [Live Demo on Netlify](https://weatherfinderv01.netlify.app/)
 
-### `npm run eject`
+## Repository
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You can view the source code for this project on GitHub:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [GitHub Repository](https://github.com/shivuptl06/weather-app-v2/tree/master)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to explore the project, and I welcome any feedback or suggestions!
