@@ -7,12 +7,12 @@ import cloud from "./icons/cloud.png";
 import drizzle from "./icons/drizzle.png";
 import rain from "./icons/rain.png";
 import snow from "./icons/snow.png";
-import windIcon from "./icons/wind.png";  // Wind icon
+import windIcon from "./icons/wind.png"; // Wind icon
 import humidityIcon from "./icons/humidity.png"; // Humidity icon
 
 function App() {
-  const API_KEY = "46647644-a5ca1c401d94abe9622557302";
-  const OpenWeatherAPI_KEY = "cd72cecc6033636d9a71e2bec98fbc65";
+  const API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
+  const OpenWeatherAPI_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
   const [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -76,7 +76,10 @@ function App() {
 
   const handleCitySelect = async (selectedOption) => {
     const { lat, lon, name } = selectedOption.value;
+
+    // Set the selected city name in the search term
     setSearchTerm(name); // Keep city name in the input field
+    setSelectedCity(selectedOption); // Set the selected city
 
     const OpenWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OpenWeatherAPI_KEY}`;
 
@@ -131,9 +134,7 @@ function App() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        
-<div className="w-4/5 xl:w-1/3 h-auto flex flex-col bg-opacity-70 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-lg p-8 items-center card-container">
-
+        <div className="w-4/5 xl:w-1/3 h-auto flex flex-col bg-opacity-70 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-lg p-8 items-center card-container">
           <h1 className="text-3xl text-white font-bold mb-4">Weather Finder</h1>
           <Select
             inputValue={searchTerm}
@@ -143,6 +144,7 @@ function App() {
             placeholder="Search City, Country"
             noOptionsMessage={() => "No cities found"}
             className="w-full p-2 rounded-md mb-4"
+            value={selectedCity} // Set the selected value
             styles={{
               control: (base) => ({
                 ...base,
@@ -171,18 +173,32 @@ function App() {
                 <span className="block text-5xl font-poppins font-bold">
                   {convertKelvin(weatherData.main.temp)}°C
                 </span>
-                <span className="block text-2xl font-light p-1">{weatherData.name}</span>
+                <span className="block text-2xl font-light p-1">
+                  {weatherData.name}
+                </span>
               </>
             )}
             {weatherData.main && (
               <div className="mt-8 w-full flex justify-between items-center space-x-10">
                 <div className="flex items-center text-xl">
-                  <img src={humidityIcon} alt="Humidity" className="w-5 h-5 mr-2" />
-                  <span>Humidity: {Math.round(weatherData.main.humidity)}%</span>
+                  <img
+                    src={humidityIcon}
+                    alt="Humidity"
+                    className="w-5 h-5 mr-2"
+                  />
+                  <span>
+                    Humidity: {Math.round(weatherData.main.humidity)}%
+                  </span>
                 </div>
                 <div className="flex items-center text-xl">
-                  <img src={windIcon} alt="Wind Speed" className="w-5 h-5 mr-2" />
-                  <span>Wind Speed: {Math.round(weatherData.wind.speed)} m/s</span>
+                  <img
+                    src={windIcon}
+                    alt="Wind Speed"
+                    className="w-5 h-5 mr-2"
+                  />
+                  <span>
+                    Wind Speed: {Math.round(weatherData.wind.speed)} m/s
+                  </span>
                 </div>
               </div>
             )}
