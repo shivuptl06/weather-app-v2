@@ -14,7 +14,7 @@ function App() {
   const API_KEY = "46647644-a5ca1c401d94abe9622557302";
   const OpenWeatherAPI_KEY = "cd72cecc6033636d9a71e2bec98fbc65";
 
-  const [images, setImages] = useState(""); // Change [] to ""
+  const [images, setImages] = useState(""); 
   const [searchTerm, setSearchTerm] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
   const [weatherData, setWeatherData] = useState({});
@@ -135,8 +135,10 @@ function App() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-4/5 xl:w-1/3 h-auto flex flex-col bg-opacity-70 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-lg p-8 items-center card-container">
-          <h1 className="text-3xl text-white font-bold mb-4">Weather Finder</h1>
+        <div className="w-4/5 xl:w-1/3 h-auto flex flex-col rounded-3xl shadow-lg p-8 items-center glass-card">
+          <h1 className="text-3xl text-white font-bold mb-4 drop-shadow-lg">
+            Weather Finder
+          </h1>
           <Select
             inputValue={searchTerm}
             onInputChange={handleInputChange}
@@ -144,33 +146,19 @@ function App() {
             onChange={handleCitySelect}
             placeholder="Search City, Country"
             noOptionsMessage={() => "No cities found"}
-            className="w-full p-2 rounded-md mb-4"
-            styles={{
-              control: (base) => ({
-                ...base,
-                border: "2px solid #4f4f4f",
-                borderRadius: "0.75rem",
-                padding: "0.5rem",
-                backgroundColor: "#fff",
-              }),
-              menu: (base) => ({
-                ...base,
-                borderRadius: "0.75rem",
-                backgroundColor: "#f0f0f0",
-              }),
-            }}
+            className="w-full p-2 rounded-md mb-4 glass-select"
           />
-          <div className="text-center text-white mt-4 flex flex-col">
+          <div className="text-center text-white mt-4 flex flex-col weather-info">
             {weatherIcon && (
               <img
                 src={weatherIcon}
                 alt="Weather Icon"
-                className="rounded-md mt-2 mb-4 items-center justify-center"
+                className="rounded-md mt-2 mb-4 mx-auto w-24 h-24"
               />
             )}
             {weatherData.main && (
               <>
-                <span className="block text-5xl font-poppins font-bold">
+                <span className="block text-5xl font-bold">
                   {convertKelvin(weatherData.main.temp)}°C
                 </span>
                 <span className="block text-2xl font-light p-1">
