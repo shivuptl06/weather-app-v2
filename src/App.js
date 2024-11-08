@@ -14,7 +14,7 @@ function App() {
   const API_KEY = "46647644-a5ca1c401d94abe9622557302";
   const OpenWeatherAPI_KEY = "cd72cecc6033636d9a71e2bec98fbc65";
 
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(""); // Change [] to ""
   const [searchTerm, setSearchTerm] = useState("");
   const [weatherIcon, setWeatherIcon] = useState("");
   const [weatherData, setWeatherData] = useState({});
@@ -57,12 +57,15 @@ function App() {
 
       try {
         const response = await axios.get(fetchGeoCoordinates_URL);
+        console.log("Geo API Response:", response.data);
+
         if (response.data.length > 0) {
           const options = response.data.map((city) => ({
             label: `${city.name}, ${city.country}`,
             value: { lat: city.lat, lon: city.lon, name: city.name },
           }));
           setCityOptions(options);
+          console.log("City Options:", options);
         } else {
           setCityOptions([]);
         }
@@ -85,6 +88,7 @@ function App() {
       if (response.data.weather) {
         setWeatherData({ ...response.data, name }); // Store city name as well
         const weatherDescription = response.data.weather[0].main.toLowerCase();
+        console.log("Weather Data Response:", response.data);
 
         // Set the appropriate weather icon based on the weather description
         switch (weatherDescription) {
