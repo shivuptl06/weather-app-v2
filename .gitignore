@@ -12,7 +12,10 @@
 /build
 
 # misc
+<<<<<<< HEAD
 .env
+=======
+>>>>>>> 70d2359 (Updated BG Fetch to reload only)
 .DS_Store
 .env.local
 .env.development.local

@@ -11,8 +11,8 @@ import windIcon from "./icons/wind.png"; // Wind icon
 import humidityIcon from "./icons/humidity.png"; // Humidity icon
 
 function App() {
-  const API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
-  const OpenWeatherAPI_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+  const API_KEY = "46647644-a5ca1c401d94abe9622557302";
+  const OpenWeatherAPI_KEY = "cd72cecc6033636d9a71e2bec98fbc65";
 
   const [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     const API_URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(
-      "weather"
+      "weather outside"
     )}&image_type=photo`;
 
     const fetchImages = async () => {
@@ -43,15 +43,15 @@ function App() {
     };
     fetchImages();
 
-    const intervalID = setInterval(fetchImages, 10000);
-    return () => clearInterval(intervalID);
-  }, [API_KEY]);
+    //const intervalID = setInterval(fetchImages, 10000);
+    //return () => clearInterval(intervalID);
+  }, []);
 
   const handleInputChange = async (inputValue) => {
     setSearchTerm(inputValue);
 
     if (inputValue.length >= 3) {
-      const fetchGeoCoordinates_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
+      const fetchGeoCoordinates_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
         inputValue
       )}&limit=5&appid=${OpenWeatherAPI_KEY}`;
 
@@ -76,10 +76,7 @@ function App() {
 
   const handleCitySelect = async (selectedOption) => {
     const { lat, lon, name } = selectedOption.value;
-
-    // Set the selected city name in the search term
     setSearchTerm(name); // Keep city name in the input field
-    setSelectedCity(selectedOption); // Set the selected city
 
     const OpenWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OpenWeatherAPI_KEY}`;
 
@@ -144,7 +141,6 @@ function App() {
             placeholder="Search City, Country"
             noOptionsMessage={() => "No cities found"}
             className="w-full p-2 rounded-md mb-4"
-            value={selectedCity} // Set the selected value
             styles={{
               control: (base) => ({
                 ...base,
