@@ -51,7 +51,7 @@ function App() {
     setSearchTerm(inputValue);
 
     if (inputValue.length >= 3) {
-      const fetchGeoCoordinates_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
+      const fetchGeoCoordinates_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
         inputValue
       )}&limit=5&appid=${OpenWeatherAPI_KEY}`;
 
